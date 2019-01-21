@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="VSBruteClean.feda2fca-7d27-45c6-86c6-381bc67fd8b6" Version="1.0" Language="en-US" Publisher="Sameer Khandekar" />
+        <DisplayName>Brute Clean</DisplayName>
+        <Description xml:space="preserve">Delete bin, obj and packages folders.</Description>
+        <MoreInfo>https://sameerkapps.wordpress.com/brute-clean-a-vs-extension</MoreInfo>
+        <License>Lic.rtf</License>
+        <GettingStartedGuide>index.html</GettingStartedGuide>
+        <ReleaseNotes>index.html</ReleaseNotes>
+        <Icon>Resources\BruteCleanCommandPackage.ico</Icon>
+        <PreviewImage>Resources\BruteCleanCommandPackage.ico</PreviewImage>
+        <Tags>clean, delete, bin, obj, packages, trash, xamarin, nuget</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+        <Dependency Id="Microsoft.VisualStudio.MPF.15.0" DisplayName="Visual Studio MPF 15.0" d:Source="Installed" Version="[15.0]" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>

@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brute-Clean", "Brute-Clean\Brute-Clean.csproj", "{B5784821-885E-4D60-8DA1-D7F1C852D000}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BruteCleanLib", "BruteCleanLib", "{B662206B-E55F-460B-82BD-9604863D4122}"
+	ProjectSection(SolutionItems) = preProject
+		BruteCleanLib\BruteCleanUtil.cs = BruteCleanLib\BruteCleanUtil.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5784821-885E-4D60-8DA1-D7F1C852D000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5784821-885E-4D60-8DA1-D7F1C852D000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5784821-885E-4D60-8DA1-D7F1C852D000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5784821-885E-4D60-8DA1-D7F1C852D000}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

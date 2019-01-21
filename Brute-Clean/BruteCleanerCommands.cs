@@ -1,0 +1,11 @@
+﻿// ////////////////////////////////////////////////////////////
+// // Copyright 2018 Sameer Khandekar                        //
+// ////////////////////////////////////////////////////////////
+using System;
+namespace BruteClean
+{
+    public enum BruteCleanerCommands
+    {
+        BruteClean,
+    }
+}

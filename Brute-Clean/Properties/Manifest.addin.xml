@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel>
+       <Extension  path = "/MonoDevelop/Ide/Commands/File">
+           <Command id = "BruteClean.BruteCleanCommands.BruteClean"
+               _label = "Brute Clean"
+               defaultHandler = "BruteClean.BruteCleanHandler" />
+       </Extension>
+
+       <Extension path = "/MonoDevelop/Ide/MainMenu/Build">
+           <CommandItem id="BruteClean.BruteCleanCommands.BruteClean" />
+       </Extension>
+</ExtensionModel>
