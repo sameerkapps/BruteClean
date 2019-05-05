@@ -49,19 +49,27 @@ namespace BruteCleaner
                 Console.WriteLine($"\r\nDeleting from folder {rootFolder}");
                 // brute delete
                 var cleanUtil = new BruteCleanLib.BruteCleanUtil(rootFolder);
-                cleanUtil.FolderRemoved += FolderRemove;
+                cleanUtil.FolderRemoved += FolderRemoved;
+                cleanUtil.FailedToRemoveFolder += FailedToRemoveFolder;
                 cleanUtil.Cleanup().Wait();
 
-                cleanUtil.FolderRemoved -= FolderRemove;
+                cleanUtil.FolderRemoved -= FolderRemoved;
+                cleanUtil.FailedToRemoveFolder -= FailedToRemoveFolder;
                 Console.WriteLine($"Completed!!!");
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
             }
         }
 
-        private static void FolderRemove(object sender, string folderName)
+        private static void FolderRemoved(object sender, string folderName)
         {
             Console.WriteLine($"Removed folder {folderName}");
+        }
+
+        private static void FailedToRemoveFolder(object sender, Tuple<string, string> message)
+        {
+            Console.WriteLine($"!!! Failed to removed Folder {message.Item1}\r\n");
+            Console.WriteLine($"---!!! Exception {message.Item2}\r\n");
         }
     }
 }

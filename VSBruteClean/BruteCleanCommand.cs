@@ -229,9 +229,11 @@ namespace VSBruteClean
             _generalPane.OutputString($"Brute Cleaning Folder {dirName}\r\n");
             var cleanUtil = new BruteCleanLib.BruteCleanUtil(dirName);
             cleanUtil.FolderRemoved += CleanUtil_FolderRemovedAsync;
+            cleanUtil.FailedToRemoveFolder += CleanUtil_FailedToRemoveFolderAsync;
             await cleanUtil.Cleanup().ContinueWith(async (res) =>
             {
                 cleanUtil.FolderRemoved -= CleanUtil_FolderRemovedAsync;
+                cleanUtil.FailedToRemoveFolder -= CleanUtil_FailedToRemoveFolderAsync;
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
                 _generalPane.OutputString($"Brute Cleaned {dirName}\r\n");
             });
@@ -242,6 +244,13 @@ namespace VSBruteClean
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
             _generalPane.OutputString($"Removed Folder {folderName}\r\n");
+        }
+
+        private async void CleanUtil_FailedToRemoveFolderAsync(object sender, Tuple<string, string> message)
+        {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
+            _generalPane.OutputString($"!!! Failed to removed Folder {message.Item1}\r\n");
+            _generalPane.OutputString($"---!!! Exception {message.Item2}\r\n");
         }
 
         /// <summary>

@@ -24,9 +24,16 @@ namespace BruteCleanLib
     public class BruteCleanUtil
     {
         /// <summary>
-        /// Event that a folder has been removed
+        /// Event => a folder has been removed
         /// </summary>
         public event EventHandler<string> FolderRemoved;
+
+        /// <summary>
+        /// Event failed to remove a folder
+        /// Item1 -> folder name
+        /// Item2 -> ex.Message
+        /// </summary>
+        public event EventHandler<Tuple<string, string>> FailedToRemoveFolder;
 
         /// <summary>
         /// Constructor accepting the root folder
@@ -79,8 +86,21 @@ namespace BruteCleanLib
                     // if it is to be removed, do it and invoke the event
                     if (ShouldDelete(dir))
                     {
-                        Directory.Delete(dir, true);
-                        FolderRemoved?.Invoke(this, dir);
+                        int maxTries = 3;
+                        for (int i = 0; i < maxTries; i++)
+                        {
+                            try
+                            {
+                                Directory.Delete(dir, true);
+                                FolderRemoved?.Invoke(this, dir);
+                                break;
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine(ex.Message);
+                                FailedToRemoveFolder?.Invoke(this, new Tuple<string, string>(dir, $"{i+1} of {maxTries}: {ex.Message}"));
+                            }
+                        }
                     }
                     else
                     {   
