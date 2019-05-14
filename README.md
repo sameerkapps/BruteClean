@@ -2,7 +2,7 @@
 ## How it works
 Several times developers need to delete the obj, bin, package folders for a really clean build. It is a time consuming manual process to go through the folders in all the projects and the packages cache. This extension walks the sub-tree of solution folder and performs the job for you. It will also optionally delete all the packages from the packages cache folder. Effectively it saves time and labor. Note: Visual Studio may recreate bin and obj folders and subfolders after the operation.
 
-This is available in both Visual Studio 2017 and VS for Mac (7.7.2)
+This is available in Visual Studio 2017, 2019 and VS 2019 for Mac (8.0.X)
 
 https://marketplace.visualstudio.com/items?itemName=Sameerk.BruteClean
 

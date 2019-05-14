@@ -123,9 +123,11 @@ namespace BruteClean
             _optputProgressMonitor.Console.Out.WriteLine($"Brute Cleaning Folder {dirName}\r\n");
             var cleanUtil = new BruteCleanLib.BruteCleanUtil(dirName);
             cleanUtil.FolderRemoved += CleanUtil_FolderRemoved;
+            cleanUtil.FailedToRemoveFolder += CleanUtil_ErrorRemovingFolder;
             await cleanUtil.Cleanup().ContinueWith((res) =>
             {
                 cleanUtil.FolderRemoved -= CleanUtil_FolderRemoved;
+                cleanUtil.FailedToRemoveFolder -= CleanUtil_ErrorRemovingFolder;
 
                 _optputProgressMonitor.Console.Out.WriteLine($"Brute Cleaned {dirName}\r\n");
             });
@@ -140,6 +142,17 @@ namespace BruteClean
         private void CleanUtil_FolderRemoved(object sender, string folderName)
         {
             _optputProgressMonitor.Console.Out.WriteLine($"Removed Folder {folderName}\r\n");
+        }
+
+        /// <summary>
+        /// Show the error while removing a folder in the output window
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="error">Folder name and the exception.</param>
+        private void CleanUtil_ErrorRemovingFolder(object sender, Tuple<string, string> error)
+        {
+            _optputProgressMonitor.Console.Out.WriteLine($"!!! Failed to remove Folder {error.Item1}\r\n");
+            _optputProgressMonitor.Console.Out.WriteLine($"---!!! Exception {error.Item2}\r\n");
         }
         #endregion
 

@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brute-Clean", "Brute-Clean\Brute-Clean.csproj", "{B5784821-885E-4D60-8DA1-D7F1C852D000}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MacBruteClean", "Brute-Clean\MacBruteClean.csproj", "{B5784821-885E-4D60-8DA1-D7F1C852D000}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BruteCleanLib", "BruteCleanLib", "{B662206B-E55F-460B-82BD-9604863D4122}"
 	ProjectSection(SolutionItems) = preProject
